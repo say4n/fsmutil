@@ -18,7 +18,7 @@ class FSM:
         }
 
     def _validate(self, sequence):
-        if set(sequence) != set("01"):
+        if not (set(sequence) == set("01") or set(sequence) == set("0") or set(sequence) == set("1")):
             raise Exception(f"Parse error: Invalid binary sequence `{sequence}`")
         else:
             return sequence
