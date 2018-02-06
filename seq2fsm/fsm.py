@@ -20,6 +20,7 @@ class FSM:
         self.graph = nx.MultiDiGraph()
 
         self.num_states = None
+        self.file_name = None
 
         # graph options
         self.graph_options = {
@@ -56,9 +57,7 @@ class FSM:
 
         A = to_agraph(self.graph)
 
-        file_name = f"fsm_for_{self.sequence}"
-        file_name = ".".join([file_name, FSM_OUTPUT_FORMAT])
-
+        file_name = ".".join([self.file_name, FSM_OUTPUT_FORMAT])
         file_path = os.path.join(FSM_OUTPUT_DIR, file_name)
 
         A.draw(path=file_path, format=FSM_OUTPUT_FORMAT, prog=FSM_OUTPUT_PROGRAM)
@@ -94,6 +93,7 @@ class FSM:
 
                 if expected_pattern == pattern_to_match:
                     if DEBUG: print(f"Found match, next state: {self.get_state_name(state)}")
-                    return self.get_state_name(state)
+                    return state
+        # No state has been matched, go back to initial state
+        return 0
 
-        return None

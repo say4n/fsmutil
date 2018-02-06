@@ -4,10 +4,11 @@ author - Sayan Goswami
 email - goswami[dot]sayan47[at]gmail[dot]com
 """
 
-from machines import MooreMachine
+from machines import MooreMachine, MealyMachine
 
 
 seq = input("Enter binary input sequnce to detect : ")
 
-myFSM = MooreMachine(seq)
+myFSM = MealyMachine(seq)
 myFSM.render_fsm()
+
