@@ -37,7 +37,12 @@ class FSM:
                 **self.graph_options)
 
         A = to_agraph(self.graph)
-        A.draw(path="graph.svg", format="svg", prog="dot")
+
+        file_name = f"fsm_for_{self.sequence}"
+        file_format = "svg"
+        program = "dot"
+
+        A.draw(path=".".join([file_name, file_format]), format=file_format, prog=program)
 
     def get_state_name(self, num, alphabet=ascii_uppercase):
         """Number to state name
