@@ -15,9 +15,9 @@ from constants import FSM_OUTPUT_DIR, FSM_OUTPUT_FORMAT, FSM_OUTPUT_PROGRAM, DEB
 
 
 class FSM:
-    def __init__(self, sequence):
+    def __init__(self, sequence, label):
         self.sequence = self._validate(sequence)
-        self.label = f"Sequence Detector for `{sequence}`"
+        self.label = label
         self.graph = nx.MultiDiGraph(label=self.label)
 
         self.num_states = None
@@ -47,7 +47,7 @@ class FSM:
     def _build_fsm(self):
         raise NotImplementedError("`build_fsm` not implemented")
 
-    def render_fsm(self):
+    def render_fsm(self, save_dot=False):
         pos = nx.nx_agraph.graphviz_layout(self.graph)
         edge_labels = nx.get_edge_attributes(self.graph, 'seq')
 
@@ -64,7 +64,10 @@ class FSM:
 
         A.draw(path=file_path, format=FSM_OUTPUT_FORMAT, prog=FSM_OUTPUT_PROGRAM)
 
-    def graph_to_dot(self):
+        if save_dot:
+            self._graph_to_dot()
+
+    def _graph_to_dot(self):
         file_name = ".".join([self.file_name, "dot"])
         file_path = os.path.join(FSM_OUTPUT_DIR, file_name)
 

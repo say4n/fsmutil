@@ -9,7 +9,8 @@ from machines import MooreMachine, MealyMachine
 
 seq = input("Enter binary input sequnce to detect : ")
 
-myFSM = MooreMachine(seq)
-myFSM.render_fsm()
-myFSM.graph_to_dot()
+mooreFSM = MooreMachine(seq)
+mooreFSM.render_fsm(save_dot=True)
 
+mealyFSM = MealyMachine(seq)
+mealyFSM.render_fsm(save_dot=True)

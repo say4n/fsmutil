@@ -11,7 +11,7 @@ from constants import DEBUG
 class MooreMachine(FSM):
     """Moore Machine"""
     def __init__(self, sequence):
-        super().__init__(sequence)
+        super().__init__(sequence, f"Moore Machine to detect `{sequence}`")
 
         self.num_states = len(self.sequence) + 1
         self.file_name = f"moore_fsm_for_{self.sequence}"
@@ -66,7 +66,7 @@ class MooreMachine(FSM):
 class MealyMachine(FSM):
     """Mealy Machine"""
     def __init__(self, sequence):
-        super().__init__(sequence)
+        super().__init__(sequence, f"Mealy Machine to detect `{sequence}`")
 
         self.num_states = len(self.sequence)
         self.file_name = f"mealy_fsm_for_{self.sequence}"
