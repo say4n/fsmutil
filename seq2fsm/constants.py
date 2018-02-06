@@ -7,7 +7,7 @@ email - goswami[dot]sayan47[at]gmail[dot]com
 # Constants
 
 ## Global
-DEBUG = True
+DEBUG = False
 
 ## FSM
 FSM_OUTPUT_DIR = "output"

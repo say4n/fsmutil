@@ -11,4 +11,5 @@ seq = input("Enter binary input sequnce to detect : ")
 
 myFSM = MooreMachine(seq)
 myFSM.render_fsm()
+myFSM.graph_to_dot()
 

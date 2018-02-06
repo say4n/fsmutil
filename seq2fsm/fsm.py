@@ -7,7 +7,7 @@ email - goswami[dot]sayan47[at]gmail[dot]com
 import matplotlib.pyplot as plt
 import networkx as nx
 import os, errno
-from networkx.drawing.nx_agraph import to_agraph
+from networkx.drawing.nx_agraph import to_agraph, write_dot
 from string import ascii_uppercase
 
 
@@ -17,10 +17,12 @@ from constants import FSM_OUTPUT_DIR, FSM_OUTPUT_FORMAT, FSM_OUTPUT_PROGRAM, DEB
 class FSM:
     def __init__(self, sequence):
         self.sequence = self._validate(sequence)
-        self.graph = nx.MultiDiGraph()
+        self.label = f"Sequence Detector for `{sequence}`"
+        self.graph = nx.MultiDiGraph(label=self.label)
 
         self.num_states = None
         self.file_name = None
+        self.built = False
 
         # graph options
         self.graph_options = {
@@ -63,7 +65,13 @@ class FSM:
         A.draw(path=file_path, format=FSM_OUTPUT_FORMAT, prog=FSM_OUTPUT_PROGRAM)
 
     def graph_to_dot(self):
-        pass
+        file_name = ".".join([self.file_name, "dot"])
+        file_path = os.path.join(FSM_OUTPUT_DIR, file_name)
+
+        if not self.built:
+            raise Exception("`graph_to_dot` was called before graph was built!")
+        
+        write_dot(self.graph, file_path)
 
     def get_state_name(self, num, alphabet=ascii_uppercase):
         """Number to state name
