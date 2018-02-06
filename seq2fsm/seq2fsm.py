@@ -9,6 +9,6 @@ from machines import MooreMachine, MealyMachine
 
 seq = input("Enter binary input sequnce to detect : ")
 
-myFSM = MealyMachine(seq)
+myFSM = MooreMachine(seq)
 myFSM.render_fsm()
 
