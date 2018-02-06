@@ -1,3 +1,3 @@
 # fsmutil
-## Finite State Machines
+Finite State Machines
 
