@@ -1,5 +1,5 @@
 digraph "" {
-	graph [label="Sequence Detector for `010`"];
+	graph [label="Mealy Machine to detect `010`"];
 	A -> A [key=0,
 	label="1/0"];
 A -> B [key=0,

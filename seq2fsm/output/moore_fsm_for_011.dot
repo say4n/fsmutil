@@ -1,5 +1,5 @@
 digraph "" {
-	graph [label="Sequence Detector for `011`"];
+	graph [label="Moore Machine to detect `011`"];
 	"A/0" -> "A/0" [key=0,
 	label=1];
 "A/0" -> "B/0" [key=0,
