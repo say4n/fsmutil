@@ -7,7 +7,7 @@ email - goswami[dot]sayan47[at]gmail[dot]com
 import matplotlib.pyplot as plt
 import networkx as nx
 import os, errno
-from networkx.drawing.nx_agraph import to_agraph, write_dot
+from networkx.drawing.nx_pydot import to_pydot, write_dot
 from string import ascii_uppercase
 
 
@@ -57,12 +57,16 @@ class FSM:
                 with_labels=True,
                 **self.graph_options)
 
-        A = to_agraph(self.graph)
+        A = to_pydot(self.graph)
+
+        if DEBUG:
+            print("graph", self.graph.edges, sep="\n")
+            print("pydot", *A.get_edges(), sep="\n")
 
         file_name = ".".join([self.file_name, FSM_OUTPUT_FORMAT])
         file_path = os.path.join(FSM_OUTPUT_DIR, file_name)
 
-        A.draw(path=file_path, format=FSM_OUTPUT_FORMAT, prog=FSM_OUTPUT_PROGRAM)
+        A.write_svg(path=file_path, f=FSM_OUTPUT_FORMAT, prog=FSM_OUTPUT_PROGRAM)
 
         if save_dot:
             self._graph_to_dot()
