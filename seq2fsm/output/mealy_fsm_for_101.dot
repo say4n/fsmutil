@@ -1,0 +1,15 @@
+digraph "" {
+	graph [label="Mealy Machine to detect `101`"];
+	A -> A [key=0,
+	label="0/0"];
+A -> B [key=0,
+label="1/0"];
+B -> B [key=0,
+label="1/0"];
+B -> C [key=0,
+label="0/0"];
+C -> A [key=0,
+label="0/0"];
+C -> B [key=0,
+label="1/1"];
+}

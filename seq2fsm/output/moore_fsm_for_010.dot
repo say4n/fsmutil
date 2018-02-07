@@ -1,19 +1,14 @@
-digraph "" {
-	graph [label="Moore Machine to detect `010`"];
-	"A/0" -> "A/0" [key=0,
-	label=1];
-"A/0" -> "B/0" [key=0,
-label=0];
-"B/0" -> "B/0" [key=0,
-label=0];
-"B/0" -> "C/0" [key=0,
-label=1];
-"C/0" -> "A/0" [key=0,
-label=1];
-"C/0" -> "D/1" [key=0,
-label=0];
-"D/1" -> "B/0" [key=0,
-label=0];
-"D/1" -> "C/0" [key=0,
-label=1];
+digraph  {
+"A/0";
+"B/0";
+"C/0";
+"D/1";
+"A/0" -> "B/0"  [key=0, label=0];
+"A/0" -> "A/0"  [key=0, label=1];
+"B/0" -> "B/0"  [key=0, label=0];
+"B/0" -> "C/0"  [key=0, label=1];
+"C/0" -> "A/0"  [key=0, label=1];
+"C/0" -> "D/1"  [key=0, label=0];
+"D/1" -> "B/0"  [key=0, label=0];
+"D/1" -> "C/0"  [key=0, label=1];
 }
