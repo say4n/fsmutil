@@ -22,6 +22,9 @@ class MooreMachine(FSM):
         # Graph built
         self.built = True
 
+        # Graph adj list
+        if DEBUG: print(self.graph.adj)
+
     def _get_node_output(self, state):
         return "0" if state != self.num_states - 1 else "1"
 
@@ -76,6 +79,9 @@ class MealyMachine(FSM):
 
         # Graph built
         self.built = True
+
+        # Graph adj list
+        if DEBUG: print(self.graph.adj)
 
     def _get_edge_output(self, state, positive):
         if state == self.num_states-1 and positive:
